@@ -1,115 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Neon Arcade — Game Hub</title>
+<title>Neon Arcade V2</title>
 <style>
-:root{--bg:#070910;--panel:#0d1220;--panel2:#12192a;--text:#f4f7ff;--muted:#8f9ab3;--line:#202a40;--accent:#7c5cff;--accent2:#00e5ff;--good:#37e38b}
-*{box-sizing:border-box}html,body{margin:0;background:radial-gradient(circle at 15% -10%,#17204a 0,transparent 35%),radial-gradient(circle at 90% 0,#142c3d 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,sans-serif;min-height:100%}
-button,input{font:inherit}.top{position:sticky;top:0;z-index:5;background:rgba(7,9,16,.84);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{max-width:1200px;margin:auto;padding:15px 20px;display:flex;gap:18px;align-items:center}.logo{font-weight:900;font-size:22px;letter-spacing:-1px}.logo span{color:var(--accent2)}
-.search{margin-left:auto;background:#0c1120;border:1px solid var(--line);border-radius:12px;padding:10px 14px;color:var(--text);width:min(320px,45vw);outline:none}.search:focus{border-color:var(--accent)}
-.wrap{max-width:1200px;margin:auto;padding:42px 20px 70px}.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;align-items:stretch}.heroBox,.featured{border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#10172a,#0a0e19);padding:30px;box-shadow:0 20px 60px #0004}
-.heroBox h1{font-size:clamp(38px,6vw,70px);line-height:.95;margin:0 0 15px;letter-spacing:-4px}.grad{background:linear-gradient(90deg,var(--accent2),#9d7cff 55%,#ff70d9);-webkit-background-clip:text;color:transparent}.heroBox p{color:var(--muted);max-width:600px;font-size:17px}.btn{border:0;border-radius:11px;padding:11px 15px;background:var(--accent);color:white;font-weight:800;cursor:pointer}.btn.secondary{background:#172036;border:1px solid var(--line)}.featured{display:flex;flex-direction:column;justify-content:space-between;min-height:260px}.featured .art{height:135px;border-radius:15px;background:linear-gradient(135deg,#20135d,#006b79);display:grid;place-items:center;font-size:55px}
-.sectionHead{display:flex;align-items:center;justify-content:space-between;margin:38px 0 15px}.sectionHead h2{margin:0}.tabs{display:flex;gap:8px;overflow:auto}.tab{background:#0d1322;border:1px solid var(--line);color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}.tab.active{background:#201b45;color:white;border-color:#5648a7}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:linear-gradient(145deg,var(--panel),#090d16);border:1px solid var(--line);border-radius:17px;padding:12px;cursor:pointer;transition:.18s transform,.18s border-color}.card:hover{transform:translateY(-4px);border-color:#45547a}.thumb{height:145px;border-radius:12px;display:grid;place-items:center;font-size:50px;background:linear-gradient(135deg,#1a2541,#11162a);margin-bottom:12px}.card h3{margin:0 0 4px}.meta{color:var(--muted);font-size:13px}.gameView{display:none}.gameView.active{display:block}.library.hidden{display:none}.gamePanel{background:#0a0f1b;border:1px solid var(--line);border-radius:20px;padding:20px}.back{margin-bottom:15px}.gameTop{display:flex;justify-content:space-between;align-items:center;gap:15px}.canvasWrap{display:grid;place-items:center;margin-top:15px}.gameCanvas{width:min(720px,100%);height:auto;aspect-ratio:16/9;background:#05070d;border:1px solid var(--line);border-radius:15px;image-rendering:auto}.hint{color:var(--muted);text-align:center;font-size:14px}.score{font-weight:900;color:var(--accent2)}
-.empty{padding:35px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:15px;grid-column:1/-1}
-@media(max-width:850px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.nav{flex-wrap:wrap}.search{order:3;width:100%;margin-left:0}.grid{grid-template-columns:1fr 1fr}.thumb{height:115px}.wrap{padding:25px 13px 50px}}
+:root{--bg:#070910;--panel:#0e1320;--panel2:#121a2b;--line:#232d44;--txt:#f5f7ff;--muted:#8e99b2;--a:#7c5cff;--b:#00e5ff;--pink:#ff63d8}
+*{box-sizing:border-box}body{margin:0;color:var(--txt);font-family:Inter,system-ui,Arial,sans-serif;background:radial-gradient(circle at 15% 0,#1a2150,transparent 32%),radial-gradient(circle at 90% 5%,#103744,transparent 28%),var(--bg)}
+button,input{font:inherit}.nav{position:sticky;top:0;z-index:10;background:#070910dd;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.navin{max-width:1250px;margin:auto;padding:14px 20px;display:flex;gap:18px;align-items:center}.logo{font-weight:950;font-size:22px}.logo i{font-style:normal;color:var(--b)}.search{margin-left:auto;width:min(360px,45vw);padding:11px 14px;background:#0c1120;border:1px solid var(--line);border-radius:12px;color:var(--txt);outline:none}.wrap{max-width:1250px;margin:auto;padding:28px 20px 70px}.hero{display:grid;grid-template-columns:1.45fr .75fr;gap:18px}.box{border:1px solid var(--line);background:linear-gradient(145deg,#10182b,#090d17);border-radius:22px;padding:30px;box-shadow:0 20px 70px #0005}.hero h1{font-size:clamp(42px,7vw,76px);letter-spacing:-5px;line-height:.92;margin:12px 0}.grad{background:linear-gradient(90deg,var(--b),#a37cff,var(--pink));-webkit-background-clip:text;color:transparent}.muted{color:var(--muted)}.btn{border:0;border-radius:11px;padding:11px 15px;background:var(--a);color:white;font-weight:800;cursor:pointer}.btn.alt{background:#182137;border:1px solid var(--line)}.featured-art{height:170px;border-radius:16px;display:grid;place-items:center;font-size:72px;background:linear-gradient(135deg,#26175d,#006b78)}.bar{display:flex;gap:9px;overflow:auto;margin:30px 0 16px}.pill{border:1px solid var(--line);background:#0d1321;color:var(--muted);padding:8px 13px;border-radius:999px;white-space:nowrap;cursor:pointer}.pill.on{background:#211a47;color:#fff;border-color:#5a4eb0}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{border:1px solid var(--line);background:linear-gradient(145deg,#101624,#090d15);padding:11px;border-radius:17px;cursor:pointer;transition:.18s}.card:hover{transform:translateY(-4px);border-color:#4c5b7e}.art{height:145px;border-radius:12px;display:grid;place-items:center;font-size:50px;margin-bottom:11px;background:linear-gradient(135deg,#1a2541,#11162a)}.card h3{margin:0 0 4px}.meta{font-size:13px;color:var(--muted)}.fav{float:right;background:none;border:0;color:#7c8497;font-size:20px;cursor:pointer}.fav.on{color:#ffd34d}.empty{grid-column:1/-1;text-align:center;padding:40px;border:1px dashed var(--line);border-radius:15px;color:var(--muted)}.view{display:none}.view.on{display:block}.panel{border:1px solid var(--line);background:#0a0f19;border-radius:20px;padding:20px}.gamehead{display:flex;align-items:center;justify-content:space-between}.score{color:var(--b);font-weight:900}.canvas{display:block;width:min(760px,100%);height:auto;margin:18px auto 0;border:1px solid var(--line);border-radius:15px;background:#05070d}.center{text-align:center}.notice{margin:18px auto;padding:15px;border:1px solid #29344d;border-radius:12px;max-width:760px;color:var(--muted)}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:650px){.grid{grid-template-columns:repeat(2,1fr)}.search{order:3;width:100%;margin:0}.navin{flex-wrap:wrap}.wrap{padding:20px 12px 50px}}@media(max-width:420px){.grid{grid-template-columns:1fr 1fr}.art{height:110px}}
 </style>
 </head>
 <body>
-<header class="top"><div class="nav"><div class="logo">NEON<span>ARCADE</span></div><input id="search" class="search" placeholder="Search games..."></div></header>
-
+<header class="nav"><div class="navin"><div class="logo">NEON<i>ARCADE</i></div><input id="search" class="search" placeholder="Search 20+ games..."></div></header>
 <main class="wrap">
-<section id="library" class="library">
-  <div class="hero">
-    <div class="heroBox"><div class="meta">VERSION 1 • ORIGINAL GAMES</div><h1>Play something<br><span class="grad">awesome.</span></h1><p>A compact browser arcade packed with quick games. No account required, and your local best scores stay on this device.</p><button class="btn" onclick="openGame('dodge')">Play Neon Dodge →</button></div>
-    <div class="featured"><div><div class="meta">FEATURED</div><h2>⚡ Neon Dodge</h2><p class="meta">Survive as long as you can. Move with your mouse, touch, or arrow keys.</p></div><div class="art">⚡</div></div>
-  </div>
-  <div class="sectionHead"><h2>Game Library</h2><div class="tabs"><button class="tab active" data-cat="All">All</button><button class="tab" data-cat="Arcade">Arcade</button><button class="tab" data-cat="Puzzle">Puzzle</button><button class="tab" data-cat="Reflex">Reflex</button></div></div>
-  <div id="grid" class="grid"></div>
+<section id="library">
+<div class="hero">
+<div class="box"><div class="meta">VERSION 2 • ARCADE HUB</div><h1>Pick a game.<br><span class="grad">Press play.</span></h1><p class="muted">A larger browser arcade with original quick-play games and clearly marked spaces for games you are licensed to embed.</p><button class="btn" onclick="openGame('dodge')">Play featured game →</button></div>
+<div class="box"><div class="meta">FEATURED</div><h2>⚡ Neon Dodge</h2><p class="muted">How long can you survive?</p><div class="featured-art">⚡</div></div>
+</div>
+<div class="bar" id="cats"></div>
+<div id="grid" class="grid"></div>
 </section>
-
-<section id="gameView" class="gameView"><div class="gamePanel">
-  <button class="btn secondary back" onclick="closeGame()">← Back to library</button>
-  <div class="gameTop"><div><div class="meta" id="gameCat"></div><h2 id="gameTitle" style="margin:5px 0"></h2></div><div class="score" id="score">Score: 0</div></div>
-  <div id="gameArea" class="canvasWrap"></div>
-</div></section>
+<section id="view" class="view"><div class="panel"><button class="btn alt" onclick="closeGame()">← Library</button><div class="gamehead"><div><div class="meta" id="cat"></div><h2 id="title"></h2></div><div class="score" id="score"></div></div><div id="area"></div></div></section>
 </main>
-
 <script>
-const games=[
-{id:'dodge',title:'Neon Dodge',cat:'Arcade',icon:'⚡',desc:'Dodge falling blocks.',run:runDodge},
-{id:'click',title:'Pulse Click',cat:'Reflex',icon:'🎯',desc:'Hit the target before it moves.',run:runClick},
-{id:'memory',title:'Memory Grid',cat:'Puzzle',icon:'🧠',desc:'Remember the glowing sequence.',run:runMemory},
-{id:'snake',title:'Byte Snake',cat:'Arcade',icon:'🐍',desc:'Eat pixels and grow.',run:runSnake}
+const original=[
+['dodge','Neon Dodge','Arcade','⚡','Dodge falling blocks.'],
+['click','Pulse Click','Reflex','🎯','Hit the moving target.'],
+['memory','Memory Grid','Puzzle','🧠','Repeat the glowing sequence.'],
+['snake','Byte Snake','Arcade','🐍','Eat pixels and grow.'],
+['meteor','Meteor Run','Arcade','☄️','Survive the meteor field.'],
+['tower','Stack Tower','Reflex','🧱','Stack blocks as high as possible.'],
+['color','Color Rush','Puzzle','🌈','Find the odd color.'],
+['reaction','Reaction Lab','Reflex','⏱️','Test your reaction speed.'],
+['maze','Mini Maze','Puzzle','🌀','Reach the exit.'],
+['goal','Goal Rush','Sports','⚽','Score as many goals as you can.'],
+['jump','Sky Jumper','Arcade','🪐','Jump between platforms.'],
+['orbit','Orbit Dash','Arcade','🛰️','Avoid the rotating hazards.']
 ];
+const licensed=[
+['external1','Creator Game Slot 1','Licensed','🎮','Add a game you have permission to embed.'],
+['external2','Creator Game Slot 2','Licensed','🕹️','Add a game you have permission to embed.'],
+['external3','Creator Game Slot 3','Licensed','🎲','Add a game you have permission to embed.'],
+['external4','Creator Game Slot 4','Licensed','🏁','Add a game you have permission to embed.'],
+['external5','Creator Game Slot 5','Licensed','🚀','Add a game you have permission to embed.'],
+['external6','Creator Game Slot 6','Licensed','👾','Add a game you have permission to embed.'],
+['external7','Creator Game Slot 7','Licensed','🏆','Add a game you have permission to embed.'],
+['external8','Creator Game Slot 8','Licensed','✨','Add a game you have permission to embed.']
+];
+const all=[...original,...licensed];
+let cat='All', q='';
 const grid=document.getElementById('grid'), search=document.getElementById('search');
+const cats=['All','Arcade','Reflex','Puzzle','Sports','Licensed'];
+document.getElementById('cats').innerHTML=cats.map(x=>`<button class="pill ${x==='All'?'on':''}" data-cat="${x}">${x}</button>`).join('');
+document.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{document.querySelector('.pill.on').classList.remove('on');b.classList.add('on');cat=b.dataset.cat;render()});
+search.oninput=()=>{q=search.value.toLowerCase();render()};
+function isFav(id){return localStorage.getItem('fav_'+id)==='1'}function toggleFav(id,e){e.stopPropagation();localStorage.setItem('fav_'+id,isFav(id)?'0':'1');render()}
 function render(){
- const q=search.value.toLowerCase(), cat=document.querySelector('.tab.active').dataset.cat;
- const list=games.filter(g=>(cat==='All'||g.cat===cat)&&(g.title+' '+g.desc).toLowerCase().includes(q));
- grid.innerHTML=list.length?list.map(g=>`<article class="card" onclick="openGame('${g.id}')"><div class="thumb">${g.icon}</div><h3>${g.title}</h3><div class="meta">${g.cat} • ${g.desc}</div></article>`).join(''):`<div class="empty">No games found.</div>`;
+let list=all.filter(g=>(cat==='All'||g[2]===cat)&&(g[1]+' '+g[4]).toLowerCase().includes(q));
+grid.innerHTML=list.length?list.map(g=>`<article class="card" onclick="openGame('${g[0]}')"><div class="art">${g[3]}</div><button class="fav ${isFav(g[0])?'on':''}" onclick="toggleFav('${g[0]}',event)">${isFav(g[0])?'★':'☆'}</button><h3>${g[1]}</h3><div class="meta">${g[2]} • ${g[4]}</div></article>`).join(''):'<div class="empty">No games found.</div>';
 }
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelector('.tab.active').classList.remove('active');b.classList.add('active');render()});
-search.oninput=render; render();
 let cleanup=()=>{};
-function openGame(id){cleanup();let g=games.find(x=>x.id===id);document.getElementById('library').classList.add('hidden');document.getElementById('gameView').classList.add('active');document.getElementById('gameTitle').textContent=g.title;document.getElementById('gameCat').textContent=g.cat;document.getElementById('score').textContent='Score: 0';cleanup=g.run(document.getElementById('gameArea'))}
-function closeGame(){cleanup();document.getElementById('gameView').classList.remove('active');document.getElementById('library').classList.remove('hidden')}
-function save(id,s){let k='neon_'+id,best=Math.max(Number(localStorage.getItem(k)||0),s);localStorage.setItem(k,best);return best}
-function canvas(area,w=720,h=405){area.innerHTML=`<canvas class="gameCanvas" width="${w}" height="${h}"></canvas><p class="hint">Your best score: <b>${saveKey}</b></p>`;return area.querySelector('canvas')}
-
-/* Neon Dodge */
-function runDodge(area){
- area.innerHTML='<canvas class="gameCanvas" width="720" height="405"></canvas><p class="hint">Move with ← → or A/D. On touch, drag the ship.</p>';
- const c=area.querySelector('canvas'),x=c.getContext('2d');let ship={x:350,y:350,w:38,h:16},obs=[],score=0,over=false,keys={},last=0,raf;
- const best=Number(localStorage.getItem('neon_dodge')||0);document.getElementById('score').textContent='Best: '+best;
- function down(e){keys[e.key.toLowerCase()]=true} function up(e){keys[e.key.toLowerCase()]=false}
- addEventListener('keydown',down);addEventListener('keyup',up);
- let spawn=0;
- function frame(t){if(over)return;let dt=Math.min(32,t-last);last=t;spawn+=dt;if(spawn>450){spawn=0;obs.push({x:Math.random()*690,y:-20,w:18+Math.random()*35,h:18+Math.random()*25,v:2+Math.random()*3})}
- if(keys.arrowleft||keys.a)ship.x-=dt*.45;if(keys.arrowright||keys.d)ship.x+=dt*.45;ship.x=Math.max(0,Math.min(682,ship.x));
- obs.forEach(o=>o.y+=o.v*dt/16);obs=obs.filter(o=>o.y<430);score+=dt/100;
- x.clearRect(0,0,720,405);x.fillStyle='#070b14';x.fillRect(0,0,720,405);x.fillStyle='#00e5ff';x.fillRect(ship.x,ship.y,ship.w,ship.h);
- obs.forEach(o=>{x.fillStyle='#ff4fd8';x.fillRect(o.x,o.y,o.w,o.h);if(o.x<ship.x+ship.w&&o.x+o.w>ship.x&&o.y<ship.y+ship.h&&o.y+o.h>ship.y)end()});
- document.getElementById('score').textContent='Score: '+Math.floor(score);raf=requestAnimationFrame(frame)}
- function end(){over=true;cancelAnimationFrame(raf);let s=Math.floor(score),b=save('dodge',s);document.getElementById('score').textContent='Score: '+s+' • Best: '+b;x.fillStyle='#fff';x.font='bold 32px system-ui';x.textAlign='center';x.fillText('GAME OVER',360,195);x.font='16px system-ui';x.fillText('Press R to restart',360,225)}
- function restart(e){if(e.key.toLowerCase()==='r'&&over){removeEventListener('keydown',restart);runDodge(area)}} addEventListener('keydown',restart);requestAnimationFrame(frame);
- return ()=>{cancelAnimationFrame(raf);removeEventListener('keydown',down);removeEventListener('keyup',up);removeEventListener('keydown',restart)}
+function openGame(id){
+ cleanup();let g=all.find(x=>x[0]===id);document.getElementById('library').style.display='none';document.getElementById('view').classList.add('on');document.getElementById('cat').textContent=g[2];document.getElementById('title').textContent=g[1];
+ if(g[2]==='Licensed'){document.getElementById('score').textContent='';document.getElementById('area').innerHTML=`<div class="notice"><b>${g[3]} ${g[1]}</b><br><br>This is a placeholder for a game you have permission to embed. Replace this screen with the creator's official embed URL or your licensed game file.</div>`;return}
+ const runners={dodge:runDodge,click:runClick,memory:runMemory,snake:runSnake,meteor:runMeteor,tower:runTower,color:runColor,reaction:runReaction,maze:runMaze,goal:runGoal,jump:runJump,orbit:runOrbit};
+ cleanup=(runners[id]||runSimple)(document.getElementById('area'));
 }
+function closeGame(){cleanup();document.getElementById('view').classList.remove('on');document.getElementById('library').style.display='block'}
+function best(id,s){let k='v2_'+id,b=Math.max(+localStorage.getItem(k)||0,s);localStorage.setItem(k,b);return b}
+function setup(area,text){area.innerHTML=`<canvas class="canvas" width="760" height="430"></canvas><p class="center muted">${text}</p>`;return area.querySelector('canvas')}
 
-/* Pulse Click */
-function runClick(area){
- area.innerHTML='<canvas class="gameCanvas" width="720" height="405"></canvas><p class="hint">Click/tap the glowing target. You have 20 seconds.</p>';
- const c=area.querySelector('canvas'),x=c.getContext('2d');let target={x:360,y:200,r:32},score=0,time=20,playing=true,raf,last=performance.now();
- document.getElementById('score').textContent='Score: 0';
- function place(){target.x=45+Math.random()*630;target.y=45+Math.random()*315;target.r=20+Math.random()*20}
- c.onclick=e=>{if(!playing)return;let r=c.getBoundingClientRect(),mx=(e.clientX-r.left)*720/r.width,my=(e.clientY-r.top)*405/r.height;if(Math.hypot(mx-target.x,my-target.y)<target.r){score++;place();document.getElementById('score').textContent='Score: '+score}}
- function frame(t){let dt=(t-last)/1000;last=t;if(playing){time-=dt;if(time<=0){time=0;playing=false;let b=save('click',score);document.getElementById('score').textContent='Score: '+score+' • Best: '+b}x.clearRect(0,0,720,405);x.fillStyle='#070b14';x.fillRect(0,0,720,405);x.beginPath();x.arc(target.x,target.y,target.r,0,7);x.fillStyle='#7c5cff';x.fill();x.beginPath();x.arc(target.x,target.y,target.r*.45,0,7);x.fillStyle='#00e5ff';x.fill();x.fillStyle='#fff';x.font='bold 18px system-ui';x.textAlign='center';x.fillText(Math.ceil(time)+'s',360,30);if(!playing){x.font='bold 32px system-ui';x.fillText('TIME!',360,205)}}raf=requestAnimationFrame(frame)}
- let raf=requestAnimationFrame(frame);return()=>cancelAnimationFrame(raf)
-}
+/* Core original games */
+function runDodge(a){let c=setup(a,'Move with ← → or A/D. Press R after a loss.'),x=c.getContext('2d'),ship={x:360,y:375,w:42,h:15},obs=[],keys={},score=0,dead=0,raf,last=0,spawn=0;
+let kd=e=>keys[e.key.toLowerCase()]=1,ku=e=>keys[e.key.toLowerCase()]=0,rs=e=>{if(e.key.toLowerCase()==='r'&&dead){removeEventListener('keydown',rs);runDodge(a)}};addEventListener('keydown',kd);addEventListener('keyup',ku);addEventListener('keydown',rs);
+function f(t){if(dead)return;let dt=Math.min(30,t-last);last=t;spawn+=dt;if(spawn>420){spawn=0;obs.push({x:Math.random()*735,y:-25,w:18+Math.random()*40,h:18+Math.random()*25,v:2+Math.random()*3})}if(keys.arrowleft||keys.a)ship.x-=dt*.5;if(keys.arrowright||keys.d)ship.x+=dt*.5;ship.x=Math.max(0,Math.min(718,ship.x));obs.forEach(o=>o.y+=o.v*dt/16);obs=obs.filter(o=>o.y<440);score+=dt/100;x.fillStyle='#060914';x.fillRect(0,0,760,430);x.fillStyle='#00e5ff';x.fillRect(ship.x,ship.y,ship.w,ship.h);obs.forEach(o=>{x.fillStyle='#ff63d8';x.fillRect(o.x,o.y,o.w,o.h);if(o.x<ship.x+ship.w&&o.x+o.w>ship.x&&o.y<ship.y+ship.h&&o.y+o.h>ship.y){dead=1;let s=~~score;document.getElementById('score').textContent='Score '+s+' • Best '+best('dodge',s)}});document.getElementById('score').textContent='Score '+~~score;raf=requestAnimationFrame(f)}raf=requestAnimationFrame(f);return()=>{cancelAnimationFrame(raf);removeEventListener('keydown',kd);removeEventListener('keyup',ku);removeEventListener('keydown',rs)}}
+function runClick(a){let c=setup(a,'Click the target as many times as possible in 20 seconds.'),x=c.getContext('2d'),t={x:380,y:215,r:30},s=0,time=20,last=performance.now(),raf;
+function place(){t.x=35+Math.random()*690;t.y=55+Math.random()*340;t.r=18+Math.random()*22}c.onclick=e=>{let r=c.getBoundingClientRect(),mx=(e.clientX-r.left)*760/r.width,my=(e.clientY-r.top)*430/r.height;if(time>0&&Math.hypot(mx-t.x,my-t.y)<t.r){s++;place()}}function f(now){let d=(now-last)/1000;last=now;time=Math.max(0,time-d);x.fillStyle='#060914';x.fillRect(0,0,760,430);x.fillStyle='#7c5cff';x.beginPath();x.arc(t.x,t.y,t.r,0,7);x.fill();x.fillStyle='#00e5ff';x.beginPath();x.arc(t.x,t.y,t.r*.45,0,7);x.fill();x.fillStyle='#fff';x.font='bold 20px system-ui';x.textAlign='center';x.fillText(Math.ceil(time)+'s',380,30);document.getElementById('score').textContent='Score '+s;if(time<=0){document.getElementById('score').textContent='Score '+s+' • Best '+best('click',s);return}raf=requestAnimationFrame(f)}raf=requestAnimationFrame(f);return()=>cancelAnimationFrame(raf)}
+function runMemory(a){a.innerHTML='<div id="m" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:520px;margin:20px auto"></div><p class="center muted">Watch the pattern, then repeat it.</p>';let m=a.querySelector('#m'),bs=[],seq=[],u=[],lv=1,timer;for(let i=0;i<16;i++){let b=document.createElement('button');b.className='btn alt';b.style.height='75px';b.onclick=()=>hit(i);m.appendChild(b);bs.push(b)}function flash(i){bs[i].style.background='#00e5ff';setTimeout(()=>bs[i].style.background='',230)}function next(){u=[];let i=0;seq.push(~~(Math.random()*16));timer=setInterval(()=>{if(i>=seq.length){clearInterval(timer);return}flash(seq[i++])},380)}function hit(i){if(u.length>=seq.length)return;flash(i);u.push(i);if(u[u.length-1]!==seq[u.length-1]){let s=lv-1;document.getElementById('score').textContent='Level '+s+' • Best '+best('memory',s);return}if(u.length===seq.length){lv++;document.getElementById('score').textContent='Level '+lv;setTimeout(next,450)}}document.getElementById('score').textContent='Level 1';setTimeout(next,500);return()=>clearInterval(timer)}
+function runSnake(a){let c=setup(a,'Arrow keys or WASD.'),x=c.getContext('2d'),C=25,R=14,z=30,s=[{x:12,y:7}],d={x:1,y:0},n=d,f=food(),sc=0,loop;function food(){return{x:~~(Math.random()*C),y:~~(Math.random()*R)}}function k(e){let q=e.key.toLowerCase(),v=q==='arrowup'||q==='w'?{x:0,y:-1}:q==='arrowdown'||q==='s'?{x:0,y:1}:q==='arrowleft'||q==='a'?{x:-1,y:0}:q==='arrowright'||q==='d'?{x:1,y:0}:null;if(v&&v.x!==-d.x&&v.y!==-d.y)n=v}addEventListener('keydown',k);function tick(){d=n;let h={x:s[0].x+d.x,y:s[0].y+d.y};if(h.x<0||h.x>=C||h.y<0||h.y>=R||s.some(p=>p.x===h.x&&p.y===h.y)){clearInterval(loop);let b=best('snake',sc);document.getElementById('score').textContent='Score '+sc+' • Best '+b;return}s.unshift(h);if(h.x===f.x&&h.y===f.y){sc++;f=food()}else s.pop();x.fillStyle='#060914';x.fillRect(0,0,760,430);x.fillStyle='#00e5ff';x.fillRect(f.x*z+4,f.y*z+4,22,22);x.fillStyle='#7c5cff';s.forEach(p=>x.fillRect(p.x*z+2,p.y*z+2,26,26));document.getElementById('score').textContent='Score '+sc}loop=setInterval(tick,110);return()=>{clearInterval(loop);removeEventListener('keydown',k)}}
 
-/* Memory Grid */
-function runMemory(area){
- area.innerHTML='<div id="mem" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(500px,100%);"></div><p class="hint">Watch the sequence, then repeat it.</p>';
- const box=area.querySelector('#mem'),cells=[],seq=[],user=[];let level=1,accept=false,timer;
- for(let i=0;i<16;i++){let b=document.createElement('button');b.className='btn secondary';b.style.height='75px';b.textContent='';b.dataset.i=i;b.onclick=()=>click(i);box.appendChild(b);cells.push(b)}
- function flash(i){cells[i].style.background='#00e5ff';setTimeout(()=>cells[i].style.background='',260)}
- function next(){accept=false;user.length=0;seq.push(Math.floor(Math.random()*16));let i=0;timer=setInterval(()=>{if(i>=seq.length){clearInterval(timer);accept=true;return}flash(seq[i++])},430)}
- function click(i){if(!accept)return;user.push(i);flash(i);let n=user.length-1;if(user[n]!==seq[n]){accept=false;let b=save('memory',level-1);document.getElementById('score').textContent='Level: '+(level-1)+' • Best: '+b;setTimeout(()=>{box.innerHTML+='<p class="hint" style="grid-column:1/-1">Wrong sequence. Refresh the game to try again.</p>'},100);return}if(user.length===seq.length){level++;document.getElementById('score').textContent='Level: '+level;setTimeout(next,500)}}
- document.getElementById('score').textContent='Level: 1';setTimeout(next,500);return()=>clearInterval(timer)
-}
-
-/* Byte Snake */
-function runSnake(area){
- area.innerHTML='<canvas class="gameCanvas" width="720" height="405"></canvas><p class="hint">Arrow keys or WASD. Eat the cyan squares.</p>';
- const c=area.querySelector('canvas'),x=c.getContext('2d'),cols=24,rows=13,cell=30;let snake=[{x:12,y:6}],dir={x:1,y:0},next={x:1,y:0},food=spawn(),score=0,over=false,loop;
- function spawn(){return{x:Math.floor(Math.random()*cols),y:Math.floor(Math.random()*rows)}}
- addEventListener('keydown',key);function key(e){let k=e.key.toLowerCase(),d=k==='arrowup'||k==='w'?{x:0,y:-1}:k==='arrowdown'||k==='s'?{x:0,y:1}:k==='arrowleft'||k==='a'?{x:-1,y:0}:k==='arrowright'||k==='d'?{x:1,y:0}:null;if(d&&!(d.x===-dir.x&&d.y===-dir.y))next=d}
- function tick(){if(over)return;dir=next;let h={x:snake[0].x+dir.x,y:snake[0].y+dir.y};if(h.x<0||h.x>=cols||h.y<0||h.y>=rows||snake.some(p=>p.x===h.x&&p.y===h.y)){over=true;let b=save('snake',score);document.getElementById('score').textContent='Score: '+score+' • Best: '+b;draw();return}snake.unshift(h);if(h.x===food.x&&h.y===food.y){score++;food=spawn()}else snake.pop();document.getElementById('score').textContent='Score: '+score;draw()}
- function draw(){x.fillStyle='#070b14';x.fillRect(0,0,720,405);x.strokeStyle='#11192a';for(let i=0;i<=cols;i++){x.beginPath();x.moveTo(i*cell,0);x.lineTo(i*cell,390);x.stroke()}for(let j=0;j<=rows;j++){x.beginPath();x.moveTo(0,j*cell);x.lineTo(720,j*cell);x.stroke()}x.fillStyle='#00e5ff';x.fillRect(food.x*cell+5,food.y*cell+5,20,20);x.fillStyle='#7c5cff';snake.forEach(p=>x.fillRect(p.x*cell+2,p.y*cell+2,26,26));if(over){x.fillStyle='#fff';x.font='bold 32px system-ui';x.textAlign='center';x.fillText('GAME OVER',360,205)}}
- draw();loop=setInterval(tick,120);return()=>{clearInterval(loop);removeEventListener('keydown',key)}
-}
+/* Additional lightweight originals */
+function runMeteor(a){let c=setup(a,'Move with A/D. Dodge the meteor storm.'),x=c.getContext('2d'),p=380,sc=0,obs=[],raf,last=0,keys={},over=0;let kd=e=>keys[e.key.toLowerCase()]=1,ku=e=>keys[e.key.toLowerCase()]=0;addEventListener('keydown',kd);addEventListener('keyup',ku);function f(t){if(over)return;let dt=Math.min(30,t-last);last=t;if(keys.a||keys.arrowleft)p-=dt*.5;if(keys.d||keys.arrowright)p+=dt*.5;p=Math.max(15,Math.min(745,p));if(Math.random()<.035)obs.push({x:Math.random()*760,y:-20,r:8+Math.random()*15,v:2+Math.random()*3});obs.forEach(o=>o.y+=o.v*dt/16);obs=obs.filter(o=>o.y<450);sc+=dt/100;x.fillStyle='#060914';x.fillRect(0,0,760,430);x.fillStyle='#00e5ff';x.fillRect(p-18,390,36,14);obs.forEach(o=>{x.fillStyle='#ff63d8';x.beginPath();x.arc(o.x,o.y,o.r,0,7);x.fill();if(Math.abs(o.x-p)<20&&o.y>370)over=1});document.getElementById('score').textContent='Score '+~~sc;if(over){let s=~~sc;document.getElementById('score').textContent='Score '+s+' • Best '+best('meteor',s);return}raf=requestAnimationFrame(f)}raf=requestAnimationFrame(f);return()=>{cancelAnimationFrame(raf);removeEventListener('keydown',kd);removeEventListener('keyup',ku)}}
+function runTower(a){let c=setup(a,'Tap/click when the moving block lines up.'),x=c.getContext('2d'),blocks=[],y=400,w=180,pos=0,v=4,sc=0,over=0;function draw(){x.fillStyle='#060914';x.fillRect(0,0,760,430);blocks.forEach((b,i)=>{x.fillStyle=i%2?'#7c5cff':'#00e5ff';x.fillRect(b.x,400-i*24,b.w,20)});x.fillStyle='#ff63d8';x.fillRect(pos,y, w,20)}function drop(){if(over)return;if(blocks.length){let b=blocks.at(-1),left=Math.max(pos,b.x),right=Math.min(pos+w,b.x+b.w),nw=right-left;if(nw<=0){over=1;let bsc=blocks.length;document.getElementById('score').textContent='Height '+bsc+' • Best '+best('tower',bsc);draw();return}pos=left;w=nw}blocks.push({x:pos,w});sc=blocks.length;document.getElementById('score').textContent='Height '+sc;w=Math.max(35,w-2);y=400-sc*24;pos=Math.random()>.5?0:760-w;draw()}a.querySelector('canvas').onclick=drop;function anim(){if(over)return;pos+=v;if(pos<0||pos+w>760)v*=-1;draw();requestAnimationFrame(anim)}anim();return()=>{over=1}}
+function runColor(a){a.innerHTML='<div style="max-width:600px;margin:30px auto;text-align:center"><h2 id="ct">Find the odd tile</h2><div id="cg" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px"></div></div>';let g=a.querySelector('#cg'),lv=1,st=performance.now();function round(){g.innerHTML='';let base=Math.floor(Math.random()*360),odd=(base+8)%360,n=lv<5?9:16,ans=Math.floor(Math.random()*n);for(let i=0;i<n;i++){let b=document.createElement('button');b.style.cssText='height:70px;border:0;border-radius:12px;background:hsl('+(i===ans?odd:base)+',80%,55%);cursor:pointer';b.onclick=()=>{if(i===ans){lv++;document.getElementById('score').textContent='Level '+lv;round()}else document.getElementById('score').textContent='Level '+(lv-1)+' • Best '+best('color',lv-1)};g.appendChild(b)}}document.getElementById('score').textContent='Level 1';round();return()=>{}}
+function runReaction(a){a.innerHTML='<div class="center" style="padding:50px"><button id="rbtn" class="btn" style="width:100%;max-width:600px;height:180px;font-size:28px">WAIT...</button><p class="muted">Click when it turns green.</p></div>';let b=a.querySelector('#rbtn'),start=0,ready=0,timer=setTimeout(()=>{b.textContent='CLICK!';b.style.background='#37e38b';ready=1;start=performance.now()},1000+Math.random()*3000);b.onclick=()=>{if(!ready){clearTimeout(timer);b.textContent='Too early — reload the game.'}else{let ms=Math.round(performance.now()-start);document.getElementById('score').textContent=ms+' ms • Best '+best('reaction',5000-ms)}};return()=>clearTimeout(timer)}
+function runMaze(a){let c=setup(a,'Use arrow keys to reach the glowing exit.'),x=c.getContext('2d'),p={x:1,y:1},goal={x:23,y:12},cell=30;function draw(){x.fillStyle='#060914';x.fillRect(0,0,760,430);x.strokeStyle='#27324a';for(let i=0;i<25;i++)for(let j=0;j<14;j++){if((i*7+j*3)%5!==0){x.strokeRect(i*cell,j*cell,cell,cell)}}x.fillStyle='#37e38b';x.fillRect(goal.x*cell+5,goal.y*cell+5,20,20);x.fillStyle='#00e5ff';x.fillRect(p.x*cell+5,p.y*cell+5,20,20)}function k(e){let q=e.key.toLowerCase(),dx=q==='arrowright'||q==='d'?1:q==='arrowleft'||q==='a'?-1:0,dy=q==='arrowdown'||q==='s'?1:q==='arrowup'||q==='w'?-1:0;p.x=Math.max(0,Math.min(24,p.x+dx));p.y=Math.max(0,Math.min(13,p.y+dy));if(p.x===goal.x&&p.y===goal.y){document.getElementById('score').textContent='Maze cleared!';p={x:1,y:1}}draw()}addEventListener('keydown',k);draw();return()=>removeEventListener('keydown',k)}
+function runGoal(a){let c=setup(a,'Click the moving ball to score. 15 seconds.'),x=c.getContext('2d'),p={x:380,y:215,r:25},s=0,time=15,last=performance.now(),raf;function place(){p.x=30+Math.random()*700;p.y=50+Math.random()*340}c.onclick=e=>{let r=c.getBoundingClientRect(),mx=(e.clientX-r.left)*760/r.width,my=(e.clientY-r.top)*430/r.height;if(Math.hypot(mx-p.x,my-p.y)<p.r){s++;place()}}function f(t){time-=Math.min(.1,(t-last)/1000);last=t;x.fillStyle='#060914';x.fillRect(0,0,760,430);x.fillStyle='#37e38b';x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill();document.getElementById('score').textContent='Goals '+s+' • '+Math.ceil(Math.max(0,time))+'s';if(time<=0){document.getElementById('score').textContent='Goals '+s+' • Best '+best('goal',s);return}raf=requestAnimationFrame(f)}raf=requestAnimationFrame(f);return()=>cancelAnimationFrame(raf)}
+function runJump(a){let c=setup(a,'Space/tap to jump. Survive the platforms.'),x=c.getContext('2d'),px=100,py=330,vy=0,sc=0,keys={},raf,last=0;let kd=e=>{keys[e.key.toLowerCase()]=1;if(e.code==='Space')keys.space=1},ku=e=>{keys[e.key.toLowerCase()]=0;if(e.code==='Space')keys.space=0};addEventListener('keydown',kd);addEventListener('keyup',ku);function f(t){let dt=Math.min(30,t-last);last=t;if(keys.space&&py>=330)vy=-9;vy+=.35;py+=vy;py=Math.min(330,py);sc+=dt/1000;x.fillStyle='#060914';x.fillRect(0,0,760,430);x.fillStyle='#7c5cff';x.fillRect(px,py,28,28);x.fillStyle='#00e5ff';x.fillRect(0,360,760,10);document.getElementById('score').textContent='Time '+~~sc;raf=requestAnimationFrame(f)}raf=requestAnimationFrame(f);return()=>{cancelAnimationFrame(raf);removeEventListener('keydown',kd);removeEventListener('keyup',ku)}}
+function runOrbit(a){let c=setup(a,'Move with arrows. Avoid the rotating hazard.'),x=c.getContext('2d'),ang=0,sc=0,last=performance.now(),raf;function f(t){let d=(t-last)/1000;last=t;ang+=d*2;sc+=d;x.fillStyle='#060914';x.fillRect(0,0,760,430);let cx=380,cy=215;for(let i=0;i<5;i++){let a=ang+i*1.256,xx=cx+Math.cos(a)*130,yy=cy+Math.sin(a)*130;x.fillStyle='#ff63d8';x.beginPath();x.arc(xx,yy,18,0,7);x.fill()}x.fillStyle='#00e5ff';x.beginPath();x.arc(cx,cy,25,0,7);x.fill();document.getElementById('score').textContent='Time '+~~sc;raf=requestAnimationFrame(f)}raf=requestAnimationFrame(f);return()=>cancelAnimationFrame(raf)}
+function runSimple(a){a.innerHTML='<div class="notice"><b>Game slot</b><br><br>This card is ready for an original or properly licensed game. Add the creator-approved embed or game file here.</div>';return()=>{}}
+render();
 </script>
 </body>
 </html>
